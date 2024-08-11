@@ -34,6 +34,15 @@ require("lazy").setup({
     {"williamboman/mason.nvim"},
     {"williamboman/mason-lspconfig.nvim"},
     {"uga-rosa/ccc.nvim"},
-
+    { 'RaafatTurki/hex.nvim' },
+    {
+      "iamcco/markdown-preview.nvim",
+      cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+      build = "cd app && yarn install",
+      init = function()
+        vim.g.mkdp_filetypes = { "markdown" }
+      end,
+      ft = { "markdown" },
+    },
 })
 
