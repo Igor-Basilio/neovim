@@ -21,7 +21,7 @@ local cmp_mappings = lsp_zero.defaults.cmp_mappings({
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {
-  "asm_lsp", "clangd", "pylsp" ,"zls", "tsserver", "cssls", "html", "gopls", "lua_ls", "tsserver", "eslint", "rust_analyzer", },
+  "ols", "asm_lsp", "clangd", "pylsp" ,"zls", "tsserver", "cssls", "html", "gopls", "lua_ls", "tsserver", "eslint", "rust_analyzer", },
   handlers = {
     function(server_name)
       require('lspconfig')[server_name].setup({})

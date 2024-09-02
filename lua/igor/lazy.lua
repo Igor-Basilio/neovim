@@ -44,5 +44,7 @@ require("lazy").setup({
       end,
       ft = { "markdown" },
     },
+    { "EdenEast/nightfox.nvim" },
+    { "stevearc/oil.nvim" },
 })
 
