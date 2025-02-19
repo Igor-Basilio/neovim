@@ -2,7 +2,7 @@
 require'nvim-treesitter.configs'.setup {
 
   ensure_installed =
-  { "python", "haskell", "vimdoc", "javascript",
+  { "asm", "java", "python", "haskell", "vimdoc", "javascript",
     "typescript", "go", "rust", "c",
     "lua", "vim", "vimdoc", "query", "cmake" },
 
@@ -13,6 +13,5 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     additional_vim_regex_highlighting = false,
   },
-
 }
 

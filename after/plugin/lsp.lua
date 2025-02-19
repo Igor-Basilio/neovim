@@ -21,13 +21,41 @@ local cmp_mappings = lsp_zero.defaults.cmp_mappings({
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {
-  "ols", "asm_lsp", "clangd", "pylsp" ,"zls", "tsserver", "cssls", "html", "gopls", "lua_ls", "tsserver", "eslint", "rust_analyzer", },
+  "java_language_server", "ols", "asm_lsp", "pylsp" ,"zls", "tsserver", "cssls", "html", "gopls", "lua_ls", "tsserver", "eslint", "rust_analyzer" },
   handlers = {
     function(server_name)
       require('lspconfig')[server_name].setup({})
     end,
   },
 })
+
+require('lspconfig').clangd.setup {
+  init_options = {
+    fallbackFlags = {'--std=c++23'}
+  },
+}
+
+require('lspconfig').lua_ls.setup {
+     settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using
+                version = 'LuaJIT',
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `love` global
+                globals = { 'love' },
+            },
+            workspace = {
+                -- Make the server aware of LÖVE's runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
+}
 
 -- Function to set filetype based on lowercase extension
 function SetFiletypeBasedOnLowercaseExtension()
@@ -38,15 +66,21 @@ function SetFiletypeBasedOnLowercaseExtension()
     -- could change this to automatically check for highest 
     -- file number then setting inc ext to that.
     if extension == 'inc' then
-        vim.bo.filetype = "asm"
+        vim.bo.filetype = "fasm"
     elseif extension == 'hs' then
         vim.bo.filetype = 'haskell'
+    elseif extension == 'asm' then
+        vim.bo.filetype = 'fasm'
     elseif extension == 'h' then
         vim.bo.filetype = 'c'
     elseif extension == 's' then
-        vim.bo.filetype = "asm"
+        vim.bo.filetype = "fasm"
     elseif extension == 'S' then
-        vim.bo.filetype = "asm"
+        vim.bo.filetype = "fasm"
+    elseif extension == 'js' then
+        vim.bo.filetype = "javascript"
+    elseif extension == 'rs' then
+        vim.bo.filetype = "rust"
     else
         vim.bo.filetype = extension
     end

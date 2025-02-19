@@ -16,8 +16,9 @@ au BufRead,BufNewFile *.a9r set filetype=a9r
 syntax clear
 
 syn keyword INSTRUCTIONS   LOAD READ ADD STORE BRZERO BRPOS BRNEG WRITE STOP 
-syn keyword INSTRUCTIONS   COPY MULT SUB DIV BR CALL PUT RET
-syn keyword RESERVED       DATA_REG global STACK GLOBAL
+syn keyword INSTRUCTIONS   COPY MULT SUB DIVIDE BR CALL PUT RET
+syn keyword RESERVED       DATA_REG global STACK GLOBAL EXTERN extern 
+syn keyword RESERVED       macro endmacro
 
 syn match   SUM             '+' 
 syn match   SUB             '-' 
